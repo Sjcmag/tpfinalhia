@@ -56,4 +56,3 @@ jobs:
       run: |
            echo "Running Docker container..."
            docker run -p 8091:8080 --name prueba --link mysqldb:mysql -e MYSQL_HOST=mysql -e MYSQL_DB_NAME=test -e MYSQL_USER=root -e MYSQL_PORT=3306 -e MYSQL_PASSWORD=poli1234 sjcmag/project-final-group:latest
-
