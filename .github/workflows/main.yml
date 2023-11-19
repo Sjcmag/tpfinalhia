@@ -43,11 +43,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Run MySQL Container
-      run: docker run -d --name mysqldb -e MYSQL_ROOT_PASSWORD=poli1234 -p 3306:3306 mysql:latest
-
-    - name: Create Database Test
-      run: docker exec -i mysqldb mysql -uroot -ppoli1234 -e "CREATE DATABASE IF NOT EXISTS test;"
-      
+      run: docker run -d --name mysqldb -e MYSQL_ROOT_PASSWORD=poli1234 -e MYSQL_DATABASE=test -p 3307:3306 mysql
     - name: Build JAR with Maven
       run: mvn package
     - name: Debug Docker Build and Push
