@@ -42,6 +42,12 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+    - name: Run MySQL Container
+      run: docker run -d --name mysqldb -e MYSQL_ROOT_PASSWORD=poli1234 -p 3306:3306 mysql:latest
+
+    - name: Create Database Test
+      run: docker exec -i mysqldb mysql -uroot -ppoli1234 -e "CREATE DATABASE IF NOT EXISTS test;"
+      
     - name: Build JAR with Maven
       run: mvn package
     - name: Debug Docker Build and Push
@@ -55,5 +61,6 @@ jobs:
     - name: Run Docker Container
       run: |
            echo "Running Docker container..."
-           docker run -p 8091:8080 --name prueba --network test -e MYSQL_HOST=mysqldb -e MYSQL_DB_NAME=test -e MYSQL_USER=root -e MYSQL_PORT=3306 -e MYSQL_PASSWORD=poli1234 sjcmag/project-final-group:latest
+           docker run -p 8091:8080 --name prueba --link mysqldb:mysql -e MYSQL_HOST=mysql -e MYSQL_DB_NAME=test -e MYSQL_USER=root -e MYSQL_PORT=3306 -e MYSQL_PASSWORD=poli1234 sjcmag/project-final-group:latest
+
 
