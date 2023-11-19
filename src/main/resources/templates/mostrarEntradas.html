@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<head>
+<!--<link th:href="@{webjars/bootstrap/4.5.0/css/bootstrap.min.css}" rel="stylesheet" type="text/css">-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500&family=Seaweed+Script&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+<style type="text/css"> 
+</style>
+<title>***Listado de Entradas***</title>
+<style>
+    body{
+    height: fit-content;
+    font-family: 'Hind Siliguri', sans-serif;
+    justify-items:center;
+    display:block;
+    overflow-y:scroll;
+}
+.titulo{
+	display:block;
+	width:100%;
+	height:10em;
+	margin-top:1em;
+	text-align:center;
+}
+img{
+	width:180px;
+	height:220px;
+}
+h20{
+	display:inline;
+}
+p{
+	display:inline;
+}
+</style>
+</head>
+
+<body>
+<div class="titulo">
+<h2>
+Peliculas Registradas
+</h2>
+</div>
+<div class="container">
+<div class="alert text-center" th:if="${formClientePeliculaErrorMessage}" th:text="${formClientePeliculaMessage}">Name Error</div>
+            <div class="col">
+            <div class="row">
+                <div class="card" th:each="t : ${listaEntradas}">
+                <h6 th:text="${t.idClientePelicula}"></h6>
+                <div class="card-body">
+                    <hr>
+                   <div> <h20>Cliente: <br><p th:text="${t.cliente.nombre} + ' ' + ${t.cliente.apellido} "></p></h20></div>
+                   <div> <h20> <p th:text="${t.cliente.dni}"></p></h20></div>
+                   <hr>
+                   <div> <h20>Pelicula: <br><p th:text="${t.pelicula.nombre}"></p></h20></div>
+                   <hr>
+                   <div> <h20>Fecha de compra: <p th:text="${t.fechaCompra}"></p></h20></div> 
+                </div>
+                </div>
+            </div>
+            </div>
+</div>
+<a href="/mostrarpeliculasclientes">
+    <div class="botn" id="volver">
+      <span >Volver al Inicio</span>
+    </div>
+    </a>
+
+</html>
