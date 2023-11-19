@@ -55,4 +55,4 @@ jobs:
     - name: Run Docker Container
       run: |
            echo "Running Docker container..."
-           docker run --network=test -e MYSQL_HOST=mysqldb -e MYSQL_DB_NAME=test -e MYSQL_USER=root -e MYSQL_PORT=3306 -e MYSQL_PASSWORD=poli1234  sjcmag/project-final-group:latest
+           docker run --name prueba -e MYSQL_HOST=mysqldb -e MYSQL_DB_NAME=test -e MYSQL_USER=root -e MYSQL_PORT=3306 -e MYSQL_PASSWORD=poli1234  sjcmag/project-final-group:latest
