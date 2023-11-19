@@ -43,8 +43,11 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build and push Docker image
+    - name: Debug Docker Build and Push
       run: |
-        docker build -t sjcmag/project-final-group .
-        docker tag sjcmag/project-final-group:latest sjcmag/project-final-group:latest
-        docker push sjcmag/project-final-group:latest
+            echo "Building Docker image..."
+            docker build -t sjcmag/project-final-group .
+            echo "Tagging Docker image..."
+            docker tag sjcmag/project-final-group:latest sjcmag/project-final-group:latest
+            echo "Pushing Docker image..."
+            docker push sjcmag/project-final-group:latest
