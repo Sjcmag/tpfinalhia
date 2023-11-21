@@ -53,5 +53,5 @@ jobs:
             echo "Pushing Docker image..."
             docker push sjcmag/project-final-group:latest
     - name: Stop MySQL Container
-      run: docker network create test2
+      run: docker network rm test2
 
