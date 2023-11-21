@@ -52,5 +52,4 @@ jobs:
             docker tag sjcmag/project-final-group:latest sjcmag/project-final-group:latest
             echo "Pushing Docker image..."
             docker push sjcmag/project-final-group:latest
-    - name: Run Docker Container
-      run: docker run -d -p 8080:8080 sjcmag/project-final-group:latest
+ 
